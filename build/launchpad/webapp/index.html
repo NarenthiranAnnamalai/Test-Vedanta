@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title> Application Overview </title>
+    <script src="shared-config.js"></script>
+    <script src="https://ui5.sap.com/1.108.7/resources/sap-ui-core.js" 
+            id="sap-ui-bootstrap"
+            data-sap-ui-theme="sap_horizon"
+            data-sap-ui-bindingSyntax="complex" 
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{"assets": "assets"}' 
+            data-sap-ui-libs="sap.m,sap.uxap,sap.ui.layout,sap.f">
+    </script>
+    <link rel="stylesheet" href="assets/preview.css">
+</head>
+
+<body id="body" class="sapUiBody">
+    <script>
+        "use strict";
+        sap.ui.localResources("assets");
+        (function (jQuery, App, Page) {
+            sap.ui.getCore().attachInit(function () {
+                sap.ui.define([
+                    "sap/ui/core/mvc/Controller",
+                    "sap/ui/model/json/JSONModel"
+                ], function (Controller, JSONModel) {
+                    return Controller.extend("PreviewController", {
+                        onInit: function () {
+
+                            const data = {"Services":[{"ServiceName":"TestVedantaService","DetailsURL":"./service/TestVedanta/","Metadata":"./service/TestVedanta/$metadata","Entities":[{"Name":"EmployeeMaster","URL":"./service/TestVedanta/EmployeeMaster","FioriURL":""},{"Name":"IdeaTable","URL":"./service/TestVedanta/IdeaTable","FioriURL":""},{"Name":"hopperMaster","URL":"./service/TestVedanta/hopperMaster","FioriURL":""},{"Name":"SBU_Unit","URL":"./service/TestVedanta/SBU_Unit","FioriURL":""},{"Name":"Department","URL":"./service/TestVedanta/Department","FioriURL":""},{"Name":"idea_Category","URL":"./service/TestVedanta/idea_Category","FioriURL":""},{"Name":"idea_Rank","URL":"./service/TestVedanta/idea_Rank","FioriURL":""},{"Name":"idea_Source","URL":"./service/TestVedanta/idea_Source","FioriURL":""},{"Name":"idea_Status","URL":"./service/TestVedanta/idea_Status","FioriURL":""},{"Name":"referring_Category","URL":"./service/TestVedanta/referring_Category","FioriURL":""},{"Name":"Idea_Header","URL":"./service/TestVedanta/Idea_Header","FioriURL":""},{"Name":"idea_Item","URL":"./service/TestVedanta/idea_Item","FioriURL":""},{"Name":"ideaStatus","URL":"./service/TestVedanta/ideaStatus","FioriURL":""},{"Name":"Hopper","URL":"./service/TestVedanta/Hopper","FioriURL":""},{"Name":"business","URL":"./service/TestVedanta/business","FioriURL":""},{"Name":"Hopper_Rating","URL":"./service/TestVedanta/Hopper_Rating","FioriURL":""},{"Name":"Hopper_Type","URL":"./service/TestVedanta/Hopper_Type","FioriURL":""}],"EntitiesCount":17}]}
+                            this.getView().setModel(new JSONModel(data));
+                        }
+                    });
+                });
+                var oApp = new App()
+                var previewView = sap.ui.view({
+                    viewName: "assets.Preview",
+                    type: sap.ui.core.mvc.ViewType.XML
+                });
+                oApp.addPage(new Page({
+                    content: [previewView],
+                    showHeader: false
+                })).placeAt("content");
+            });
+
+        }(jQuery, sap.m.App, sap.m.Page));
+    </script>
+    <div id="content"></div>
+</body>
+
+</html>
